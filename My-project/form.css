@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 80px 0 0; 
+    box-sizing: border-box; 
+    background:url(Images/bg\ 1.jpg);
+    background-size: cover;
+}
+
+.navbar {
+    background-color: palevioletred; 
+    padding: 0 20px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    height: 80px; 
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+    width: 97%; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 1000; 
+}
+.navbar p
+{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 23px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); 
+    padding: 20px;
+}
+
+form {
+    background: white;
+    padding: 2em;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+button {
+    padding: 10px;
+    background-color:rgb(190, 35, 87);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: palevioletred;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+}
+    .navbar ul {
+        flex-direction: row;
+    }
+
+
+        .navbar li {
+            margin: 0px 10px; /* More vertical space between items */
+        }
+    
+    
+    .navbar li a:hover {
+        color: white;
+    }
+
+ .navbar img {
+    width: 60px;
+    height: 60px;
+    padding-top: -10px;
+    margin-top: -5px;
+   margin-bottom: -10px;
+   margin-left:20px ;
+
+   }

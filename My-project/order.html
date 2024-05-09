@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Order - Florative Decore</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cart-details"></div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('order-cart-items'); // Ensure you have this element in your HTML
+            const cartTotal = document.getElementById('order-cart-total'); // And this one too
+        
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - ${item.price} PKR`;
+                cartItemsContainer.appendChild(li);
+            });
+        
+            const total = cart.reduce((acc, item) => acc + item.price, 0);
+            cartTotal.textContent = `Total: ${total} PKR`;
+        });
+        </script>
+       <button id="confirm-order">Confirm Order</button>
+       <script>
+       document.getElementById('confirm-order').addEventListener('click', function() {
+           alert("Your order has been confirmed!");
+           // Optionally clear the cart
+           localStorage.clear();
+           window.location.href = 'index.html'; // Redirect to the homepage or a confirmation page
+       });
+       </script>
+       
+        
+        
+</body>
+</html>

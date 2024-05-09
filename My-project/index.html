@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Florative Decore</title>
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="Images/logo.png" alt="Florative Decor Logo">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            <div class="logo">
+                <p>Florative Decore</p>
+            </div>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="bouquets.html">Bouquets</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </div>
+
+                    <script>
+                        function toggleCart() {
+                            const cartDropdown = document.getElementById('cart-dropdown');
+                            cartDropdown.style.display = cartDropdown.style.display === 'none' ? 'block' : 'none';
+                        }
+                    </script>
+                </li>
+
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" name="search" id="search" placeholder="search">
+
+                </div>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <div id="cart-dropdown" class="cart-dropdown">
+            <ul id="cart-items"></ul>
+            <p id="cart-total"></p>
+        </div>
+        <section class="home" id="home">
+            <div class="content">
+                <h1>Flowers Bouquet</h1>
+                <span>"WHERE FLOWER BLOOMS,SO DOES HOPE!"</span>
+                <p>Browse our selection of beautiful bouquets and bring some joy into your home or the home of a loved
+                    one!</p>
+
+            </div>
+        </section>
+        <section class="Home" id="Home">
+            <h2>All bouquets</h2>
+            <div id="bouquets-container">
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const bouquets = [
+                            { name: "Rose Bouquet", description: "A beautiful bouquet of fresh roses", price: 1500, img: "Images/pic 1.jpg" },
+                            { name: "Red velvety Bouquet", description: "Vibrant velvety flowers arranged elegantly", price: 1400, img: "Images/pic 2.jpg" },
+                            { name: "Customized Bouquet", description: "A beautiful gift to made someone day", price: 2000, img: "Images/pic 3.jpg" },
+                            { name: "Black rose Bouquet", description: "Cheerful bouquet to brighten any day", price: 1500, img: "Images/pic 4.jpg" },
+                            { name: "Single rose Bouquet", description: "Red rose bouquet to brighten any day", price: 700, img: "Images/pic 5.jpg" },
+                            { name: "Multi customized Bouquet", description: "Enchanting bouquet to brighten any day", price: 2500, img: "Images/pic 6.jpg" },
+                            { name: "Reddish Bouquet", description: "Cheerful roses to brighten any day", price: 2800, img: "Images/pic 7.jpg" },
+                            { name: "Customized Money Bouquet", description: "Cheerful Bouquet to brighten any day", price: 2500, img: "Images/pic 8.jpg" },
+                            { name: "Large Red Roses Bouquet", description: "Cheerful and elegant roses to brighten any day", price: 3000, img: "Images/pic 9.jpg" }
+                        ];
+                    
+                        let cart = [];
+                    
+                        const bouquetsContainer = document.getElementById("bouquets-container");
+                        const cartItems = document.getElementById("cart-items");
+                        const cartTotal = document.getElementById("cart-total");
+                        const cartCount = document.getElementById("cart-count");
+                    
+                        bouquets.forEach((bouquet, index) => {
+                            const bouquetCard = document.createElement("div");
+                            bouquetCard.classList.add("bouquet-card");
+                            bouquetCard.innerHTML = `
+                                <img src="${bouquet.img}" alt="${bouquet.name}">
+                                <h3>${bouquet.name}</h3>
+                                <p>${bouquet.description}</p>
+                                <p>Price: ${bouquet.price} PKR</p>
+                                <button onclick="addToCart(${index})">Add to Cart</button>
+                            `;
+                            bouquetsContainer.appendChild(bouquetCard);
+                        });
+                    
+                        function addToCart(index) {
+                            const item = bouquets[index];
+                            cart.push(item);
+                            localStorage.setItem('cart', JSON.stringify(cart)); // Save the cart to local storage
+                            updateCartDisplay();
+                            document.querySelectorAll('.bouquet-card button')[index].textContent = 'Added to Cart';
+                            document.querySelectorAll('.bouquet-card button')[index].disabled = true;
+                            document.querySelectorAll('.bouquet-card button')[index].style.backgroundColor = 'gray';
+                        }
+                    
+                        function updateCartDisplay() {
+                            cartItems.innerHTML = ''; // Clear existing items
+                            cart.forEach(item => {
+                                const li = document.createElement("li");
+                                li.textContent = `${item.name} - ${item.price} PKR`;
+                                cartItems.appendChild(li);
+                            });
+                            const total = cart.reduce((acc, item) => acc + item.price, 0);
+                            cartTotal.textContent = `Total: ${total} PKR`;
+                        }
+                    });
+                    </script>
+                    
+
+            </div>
+
+        </section>
+
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>Florative Decore is dedicated to providing beautiful floral arrangements for all occasions.Our goal
+                    is to provide people with beautiful ribbons as well as fresh flowers bouquets to make their special
+                    moments
+                    more special</p>
+            </div>
+            <div class="footer-sectioncontact">
+                <h3>Contact Information</h3>
+                <p>Email: florative-decore@gmail.com<br>Phone: 123-456-7890</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="bouquets.html">Bouquets</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Florative Decore
+        </div>
+    </footer>
+
+</body>
+
+</html>
